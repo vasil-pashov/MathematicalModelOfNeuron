@@ -41,7 +41,7 @@ showPdf() {
     pdfName=$(echo "$1" |cut -d"." -f1)
     fullFile="$pdfName.pdf"
     if [ -f $fullFile ];then
-        evince $fullFile
+        evince $fullFile &
     else
         echo "Error. Can't show PDF"
         exit 2

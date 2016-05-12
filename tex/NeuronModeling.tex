@@ -59,12 +59,21 @@
     \begin{figure}[h!]
         \begin{center}
             \begin{circuitikz}
-                \draw (5,5)
-                    node[op amp](opamp){}
-                    (0,0) node[left] {Axon}  to [V]
-                    (opamp.+) node[left] {$v_+$}
+                \draw 
+                    (5,5) node[op amp](opamp){}
+                    (5,1.51)node[op amp, rotate=180](opamp2){}
+                    %(0,0) node[left] {Axon}  to [V]
+                    (1,5.5) to [V]
                     (opamp.-) node[left] {$v_-$}
-                    (opamp.out) node[left] {$v_+o$}
+                    (opamp.+) node[left] {$v_+$}
+                    (opamp.out) node[left] {$v_o$}
+                    (6,5) to (8,5)
+                    (8,5) to (8,2)
+                    (8,2) to (6,2)
+                    (8,1) to (6,1.01)
+                    ++(-2,0.5) to ++(-6,0)
+                    ++(0,0) to ++(0,3)
+                    ++(0,0)to[generic] ++(1.5,0)
                 ;\end{circuitikz}
             \caption{My first circuit.}
         \end{center}
