@@ -37,8 +37,20 @@ moveFiles(){
     done
 }
 
+showPdf() {
+    pdfName=$(echo "$1" |cut -d"." -f1)
+    fullFile="$pdfName.pdf"
+    if [ -f $fullFile ];then
+        evince $fullFile
+    else
+        echo "Error. Can't show PDF"
+        exit 2
+    fi
+}
+
 compile $1
 createLogFolder $folder
 printLog 
 moveFiles $folder
+showPdf $1
 
