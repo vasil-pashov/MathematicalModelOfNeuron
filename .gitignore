@@ -1,3 +1,8 @@
 tex/texLog/
 *.pdf
 *.swp
+*.toc
+*.log
+*.fls
+*.aux
+*.fdb_latexmk
