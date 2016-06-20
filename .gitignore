@@ -6,3 +6,5 @@ tex/texLog/
 *.fls
 *.aux
 *.fdb_latexmk
+*.*~
+!tex/schemas/*
