@@ -51,6 +51,6 @@ showPdf() {
 compile $1
 createLogFolder $folder
 printLog 
-moveFiles $folder
+#moveFiles $folder
 showPdf $1
 

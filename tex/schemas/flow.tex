@@ -1,0 +1,21 @@
+\begin{tikzpicture}[line cap=round,line join=round,>=triangle 45,x=1.0cm,y=1.0cm]
+    \clip(-4.06,1.96) rectangle (6.05,6.09);
+    \draw (-4,6)-- (6,6);
+    \draw (-4,2)-- (6,2);
+    \draw (0,6)-- (0,2);
+    \draw (2,6)-- (2,2);
+    \draw (-4,4)-- (0,4);
+    \draw (-1.9,4) -- (-2,3.88);
+    \draw (-1.9,4) -- (-2,4.12);
+    \draw (2,4)-- (6,4);
+    \draw (4.1,4) -- (4,3.88);
+    \draw (4.1,4) -- (4,4.12);
+    \begin{scriptsize}
+        \fill [color=black] (0,4) circle (1.5pt);
+        \draw[color=black] (0.18,4.23) node {$\xi$};
+        \draw[color=black] (-1.61,4.25) node {j($\xi$,t)};
+        \fill [color=black] (2,4) circle (1.5pt);
+        \draw[color=black] (2.72,4.23) node {$\xi + \Delta\xi$};
+        \draw[color=black] (5.03,4.29) node {j($\xi + \Delta\xi$,t)};
+    \end{scriptsize}
+\end{tikzpicture}
