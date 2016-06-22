@@ -173,22 +173,22 @@
     проводника. Тоест $I = j\left(x, t\right)$. Закона на Ом пък е известно че $I = \frac{U}{R} $. Токът е равен на напрежението разделено
     на съпротивлението. Сега можем да запишем \eqref{integral_form} по следния начин:
     \begin{equation}
-        U\left(\xi,t\right) - U\left(\xi + \Delta\xi, t\right) = R\int_{\xi}^{\xi + \Delta\xi} i\left(\xi,t\right)dx
+        V\left(\xi,t\right) - V\left(\xi + \Delta\xi, t\right) = R\int_{\xi}^{\xi + \Delta\xi} i\left(\xi,t\right)dx
     \end{equation}
     Това е интегралната форма на закона за запазване. Ние сега ще го приведем в диференциална форма. Първо апроксимираме интеграла в дясна
     та част, използвайки формулата на правоъгълниците, и получаваме:
     
     \begin{gather*} 
-        U\left(\xi,t\right) - U\left(\xi + \Delta\xi, t\right) = i\left(\xi + \frac{\Delta\xi}{2},t\right)R\Delta\xi +
+        V\left(\xi,t\right) - V\left(\xi + \Delta\xi, t\right) = i\left(\xi + \frac{\Delta\xi}{2},t\right)R\Delta\xi +
         O\left(\Delta\xi^3\right)R\\
      \end{gather*}
 
      Сега делим на $\Delta\xi$ и пускаме $\Delta\xi$ да клони към 0 и получаваме следното за тока през аксона:
      
     \begin{gather*} 
-        \frac{U\left(\xi,t\right) - U\left(\xi + \Delta\xi, t\right)}{\Delta\xi} = i\left(\xi + \frac{\Delta\xi}{2},t\right)R +
+        \frac{V\left(\xi,t\right) - V\left(\xi + \Delta\xi, t\right)}{\Delta\xi} = i\left(\xi + \frac{\Delta\xi}{2},t\right)R +
         O\left(\Delta\xi^2\right)R\\
-        i\left(\xi,t\right) = -\frac{1}{R}\frac{dU}{dx}\left(\xi,t\right)
+        i\left(\xi,t\right) = -\frac{1}{R}\frac{dV}{dx}\left(\xi,t\right)
      \end{gather*}
 
   %   От друга страна през мембраната също ще протече ток. откъдето следва:
@@ -203,7 +203,32 @@
   %     j_{ion}(x,t)= -\frac{1}{R}\frac{d^2U}{dx^2}\left(\xi,t\right)
   %  \end{equation}
 
+    \subsection{Апроксимация на модела} 
+    Получената система от диференциални уравнения е изключително трудна за решаване. Затова ще я апроксимираме с числен метод. За тази цел
+    трябва да дискретизираме областта, в която търсим решенията, както въведем равномерна мрежа от възли. В тези възли ще търсим приближеното решнение.
+    След това ще апроксимираме прозиводните. Нека с $h$, $\tau$ и $y_i^j$ означим съответно стъпката по пространството, времето и
+    приближеното решение в точка $x_i$ и момент $t_j$. 
+    
+    Апроксимираме $\frac{\partial^2 V}{\partial x^2}$ с формулата за апроксимация на производни от втори ред и получаваме:
 
+    \begin{equation}\label{der:mid_space}
+        \frac{\partial^2 V}{\partial x^2} \approx \frac{y_{i-1}^j - 2y_i^j + y_{i+1}^j}{h^2}
+    \end{equation}
+    
+    Апроксимираме производната по времето $\frac{\partial V}{\partial t}$ с формулата за разлика напред и получаваме:
+
+    \begin{equation}\label{der:forward_time}
+        \frac{\partial V}{\partial t} \approx \frac{y_i^{j+1} - y_i^j}{\tau}
+    \end{equation}
+
+    Аналогично на \eqref{der:forward_time} апроксимираме и прозиводните: $\frac{dm}{dt}, \frac{dn}{dt}, \frac{dh}{dt}$
+
+    Замествайки тези резултати в системата получаваме следната апроксимация на модела на Ходжкин-Хъксли изразено спрямо неизвестното
+    $y_i^{j+1}$.
+
+    \begin{equation}
+        y_i^{j+1} = \left(\frac{1}{rc}\frac{y_{i-1}^j - 2y_i^j + y_{i+1}^j}{h^2} - \frac{j_{ion}}{c}\right)\tau + y_i^j
+    \end{equation}
 
 
 \end{document} 
