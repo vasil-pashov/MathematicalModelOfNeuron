@@ -231,9 +231,25 @@
     Замествайки тези резултати в системата получаваме следната апроксимация на модела на Ходжкин-Хъксли изразено спрямо неизвестното
     $y_i^{j+1}$.
 
-    \begin{equation}
-        y_i^{j+1} = \left(\frac{1}{rc}\frac{y_{i-1}^j - 2y_i^j + y_{i+1}^j}{h^2} - \frac{j_{ion}}{c}\right)\tau + y_i^j
+    \begin{equation}\label{approx:H-H}
+        \begin{aligned}
+            &y_i^{j+1} = \frac{\tau}{rch^2}\left(y_i^j +y_{i+1}^j\right) + y_i^j\left(1 - 2\frac{\tau}{h^2}\right)\frac{1}{rc}
+            - \frac{j_{ion}}{c}\tau\\
+            &m_i^{j+1} = \left(\alpha_m(1-n) - \beta_mm\right)\tau + m_i^j\\
+            &h_i^{j+1} = \left(\alpha_h(1-h) - \beta_hh\right)\tau + h_i^j\\
+            &n_i^{j+1} = \left(\alpha_n(1-n) - \beta_nn\right)\tau + n_i^j
+    \end{aligned}
     \end{equation}
 
+    Системата \eqref{approx:H-H} ни дава триточков шаблон. След като са ни известни три от точките на един слой, можем да намерим една точка
+    на следващия. Следващата фигура илюстрира това визуално, известни са ни точките на слой $j$, и чрез тях намираме точката слой $j+1$.
+    \begin{figure}[h!]
+        \begin{center}
+        \input{./schemas/schema-pdeapprox}
+        \caption{}
+        \end{center}
+    \end{figure}
 
+    Очевидно е, че този шаблон не може да бъде поставен така, че да се открият първите и последните точки на всеки слой. Стойностите на тези
+    точки са ни известни, обаче от граничните условия, а стойностите в първия слой са ни известни от началното условие.
 \end{document} 
